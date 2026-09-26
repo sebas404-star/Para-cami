@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para Cami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a0f27;
+    --bg-panel:#12183a;
+    --rose:#e8b6a4;
+    --gold:#d8b579;
+    --ivory:#f4efe4;
+    --muted:#9aa2c4;
+    --line:rgba(244,239,228,0.14);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg-deep);
+    color:var(--ivory);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.serif{font-family:'Cormorant Garamond', serif;}
+  section{
+    position:relative;
+    padding:6rem 1.5rem;
+    max-width:640px;
+    margin:0 auto;
+  }
+  ::selection{background:var(--rose); color:var(--bg-deep);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    padding:2rem 1.5rem;
+  }
+  .stars{position:absolute; inset:0; z-index:0;}
+  .star{
+    position:absolute;
+    background:var(--ivory);
+    border-radius:50%;
+    opacity:0.6;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15;}
+    50%{opacity:0.9;}
+  }
+  .moon{
+    width:64px; height:64px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #fff8ea, var(--gold) 70%);
+    box-shadow:0 0 40px rgba(216,181,121,0.35);
+    margin-bottom:2rem;
+    position:relative; z-index:1;
+  }
+  .hero h1{
+    font-size:clamp(3.2rem, 12vw, 5.5rem);
+    font-weight:500;
+    font-style:italic;
+    color:var(--rose);
+    position:relative; z-index:1;
+    line-height:1;
+  }
+  .hero p{
+    margin-top:1.4rem;
+    max-width:26ch;
+    color:var(--muted);
+    font-size:1.05rem;
+    line-height:1.6;
+    position:relative; z-index:1;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom:2.5rem;
+    left:50%; transform:translateX(-50%);
+    width:1px; height:36px;
+    background:linear-gradient(var(--muted), transparent);
+    z-index:1;
+  }
+
+  /* ---------- Letter ---------- */
+  .letter p{
+    font-size:1.18rem;
+    line-height:1.9;
+    color:var(--ivory);
+    margin-bottom:1.4rem;
+  }
+  .letter p:first-child::first-letter{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3.4rem;
+    float:left;
+    line-height:0.8;
+    padding-right:0.5rem;
+    padding-top:0.3rem;
+    color:var(--rose);
+  }
+  .signature{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--rose);
+    margin-top:2rem;
+  }
+
+  /* ---------- Reasons ---------- */
+  .reasons-title{
+    font-size:2rem;
+    font-weight:500;
+    font-style:italic;
+    color:var(--rose);
+    margin-bottom:2.2rem;
+    text-align:center;
+  }
+  .reason{
+    border-top:1px solid var(--line);
+    padding:1.3rem 0;
+    font-size:1.05rem;
+    line-height:1.6;
+    color:var(--ivory);
+  }
+  .reason:last-child{border-bottom:1px solid var(--line);}
+
+  /* ---------- Distance ---------- */
+  .distance{text-align:center;}
+  .distance-line{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:2.6rem 0 1.6rem;
+  }
+  .dot{
+    width:12px; height:12px; border-radius:50%;
+    background:var(--rose);
+    flex-shrink:0;
+  }
+  .track{
+    flex:1; height:1px;
+    background:var(--line);
+    position:relative;
+  }
+  .heart{
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    font-size:1.3rem;
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1); opacity:0.85;}
+    50%{transform:translate(-50%,-50%) scale(1.25); opacity:1;}
+  }
+  .distance-labels{
+    display:flex; justify-content:space-between;
+    font-size:0.85rem; color:var(--muted);
+    letter-spacing:0.02em;
+  }
+  .distance p.note{
+    margin-top:2rem;
+    color:var(--muted);
+    font-size:1.02rem;
+    line-height:1.7;
+  }
+
+  /* ---------- Closing / reveal ---------- */
+  .closing{
+    text-align:center;
+    padding-bottom:8rem;
+  }
+  .closing h2{
+    font-size:2.2rem;
+    font-style:italic;
+    font-weight:500;
+    color:var(--rose);
+    margin-bottom:2rem;
+  }
+  .reveal-btn{
+    background:transparent;
+    border:1px solid var(--rose);
+    color:var(--rose);
+    font-family:'Jost', sans-serif;
+    font-size:1rem;
+    padding:0.9rem 2rem;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background 0.3s ease, color 0.3s ease;
+  }
+  .reveal-btn:hover, .reveal-btn:focus-visible{
+    background:var(--rose);
+    color:var(--bg-deep);
+  }
+  .reveal-btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .secret{
+    max-width:44ch;
+    margin:2.2rem auto 0;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    line-height:1.7;
+    color:var(--ivory);
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transition:opacity 0.8s ease;
+  }
+  .secret.show{
+    opacity:1;
+    max-height:400px;
+  }
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem 3.5rem;
+    color:var(--muted);
+    font-size:0.85rem;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .star, .heart{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+  <h1>Cami</h1>
+  <p>Aunque haya tantos kilómetros entre nosotros, esta noche miramos el mismo cielo.</p>
+  <div class="scroll-hint"></div>
+</div>
+
+<section class="letter">
+  <p>Hay días en los que la distancia pesa más de lo que quisiera admitir. Quisiera poder cruzar todo ese espacio en un segundo, solo para abrazarte y no soltarte. Pero mientras eso no sea posible, quiero que sepas algo con toda certeza: lo que siento por ti no se debilita con los kilómetros, se hace más firme.</p>
+  <p>Cada mensaje tuyo, cada nota de voz, cada "buenos días" que me llega desde tan lejos, me recuerda por qué vale la pena esperar. No estás aquí conmigo todos los días, pero estás en cada plan que hago, en cada canción que me hace pensar en ti, en cada noche que miro las estrellas y me pregunto si tú también las estás mirando.</p>
+  <p>Te amo, Cami. No a pesar de la distancia, sino incluso con ella de por medio. Y pienso demostrártelo cada día hasta que ese espacio entre los dos deje de existir.</p>
+  <p class="signature">Tuyo, siempre.</p>
+</section>
+
+<section class="reasons">
+  <p class="reasons-title">Cosas que quiero que sepas</p>
+  <div class="reason">Tu risa se escucha igual de bonita desde lejos que de cerca.</div>
+  <div class="reason">Cuento las horas que faltan para volver a verte, no los días.</div>
+  <div class="reason">Cada lugar nuevo que conozco, pienso en llevarte algún día.</div>
+  <div class="reason">Guardo tus mensajes como quien guarda algo valioso.</div>
+  <div class="reason">La distancia no ha cambiado nada de lo que siento, solo lo ha puesto a prueba.</div>
+</section>
+
+<section class="distance">
+  <p class="reasons-title">Un mismo cielo</p>
+  <div class="distance-line">
+    <span class="dot"></span>
+    <span class="track"><span class="heart">❤</span></span>
+    <span class="dot"></span>
+  </div>
+  <div class="distance-labels">
+    <span>Yo</span>
+    <span>Tú</span>
+  </div>
+  <p class="note">No importa cuántos kilómetros nos separen: la misma luna que yo veo antes de dormir es la que tú ves al despertar. Eso me basta para sentirte cerca.</p>
+</section>
+
+<section class="closing">
+  <h2>Para ti, Cami</h2>
+  <button class="reveal-btn" id="revealBtn">Haz clic aquí</button>
+  <p class="secret" id="secretMsg">Eres, sin duda, lo mejor que la distancia no ha podido quitarme. Te amo hoy, mañana y en cada kilómetro que nos falte por recorrer juntos.</p>
+</section>
+
+<footer>hecho con todo mi amor, para ti</footer>
+
+<script>
+  const starsContainer = document.getElementById('stars');
+  const starCount = window.innerWidth < 480 ? 40 : 70;
+  for (let i = 0; i < starCount; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 1;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    starsContainer.appendChild(s);
+  }
+
+  const btn = document.getElementById('revealBtn');
+  const msg = document.getElementById('secretMsg');
+  btn.addEventListener('click', () => {
+    msg.classList.toggle('show');
+    btn.textContent = msg.classList.contains('show') ? 'Leer de nuevo' : 'Haz clic aquí';
+  });
+</script>
+
+</body>
+</html>
